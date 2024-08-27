@@ -22,7 +22,7 @@ dependencies:
 additional_build_steps:
   prepend_base:
     - |
-      RUN dnf update -y && dnf clean all
+      RUN microdnf update -y && microdnf clean all
   append_final:
     - |
       RUN echo "awx ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
