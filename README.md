@@ -58,7 +58,7 @@ if you require to add more python modules please edit the file requirements.txt
 
 The following packages has been integraded on the execution enviroment
 ```
-     - gcc
+    - gcc
     - sudo
     - bash
     - git
