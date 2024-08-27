@@ -22,6 +22,8 @@ dependencies:
 additional_build_steps:
   prepend_base:
     - |
+      RUN microdnf install dnf -y &&  microdnf clean all
+    - |
       RUN microdnf update -y && microdnf clean all
   append_final:
     - |
