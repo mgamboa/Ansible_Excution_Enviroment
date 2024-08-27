@@ -1,0 +1,32 @@
+---
+version: 3
+images:
+  base_image:
+    name: registry.access.redhat.com/ubi8/ubi:latest
+
+dependencies:
+  ansible_core:
+    package_pip: ansible-core
+  ansible_runner:
+    package_pip: ansible-runner
+  python: requirements.txt
+  system:
+    - gcc
+    - sudo
+    - bash
+    - git
+    - openssh-clients
+    - sshpass
+  galaxy: requirements.yml
+
+additional_build_steps:
+  prepend_base:
+    - |
+      RUN dnf update -y && dnf clean all
+  append_final:
+    - |
+      RUN echo "awx ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    - |
+      RUN chmod 4755 /usr/bin/sudo
+    - |
+      RUN mkdir -p /etc/ansible && echo "localhost ansible_connection=local" >> /etc/ansible/hosts

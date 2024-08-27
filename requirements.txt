@@ -1,0 +1,5 @@
+pywinrm
+pyVmomi
+requests
+PyYAML
+aiohttp
